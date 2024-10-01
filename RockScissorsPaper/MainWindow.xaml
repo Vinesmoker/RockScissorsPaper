@@ -3,10 +3,64 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RockScissorsPaper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Rock-Scissors-Paper" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Background.jpeg"/>
+    </Window.Background>
+
     <Grid>
- 
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Name="ResultText" FontSize="24" HorizontalAlignment="Center" 
+                       FontWeight="Bold" Foreground="DarkOrange" Text="{Binding ResultText}"
+                       Margin="0,0,0,20">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Black" ShadowDepth="5" Opacity="0.8" BlurRadius="10"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding PlayCommand}" CommandParameter="Камень" 
+                        Margin="10" Width="100" Height="100" Background="Transparent" BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Ellipse Width="100" Height="100">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Images/Rock.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Command="{Binding PlayCommand}" CommandParameter="Ножницы" 
+                        Margin="10" Width="100" Height="100" Background="Transparent" BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Ellipse Margin="-5, -20" Width="110" Height="110">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Images/Scissors.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Command="{Binding PlayCommand}" CommandParameter="Бумага" 
+                        Margin="10" Width="100" Height="100" Background="Transparent" BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Ellipse Margin="-10, -20" Width="130" Height="130">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Images/Paper.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <Image Source="{Binding ComputerChoiceImage}" Width="100" Height="100" Margin="0,20,0,0" />
+        </StackPanel>
     </Grid>
 </Window>

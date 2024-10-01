@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RockScissorsPaper
+﻿public class GameModel
 {
-    public class GameModel
-    {
-        private readonly string[] choices = { "Камень", "Ножницы", "Бумага" };
-        private readonly Random random = new();
+    private readonly string[] choices = { "Камень", "Ножницы", "Бумага" };
+    private readonly Random random = new();
 
-        public string GetComputerChoice()
+    public string GetComputerChoice()
+    {
+        return choices[random.Next(choices.Length)];
+    }
+
+    public string DetermineWinner(string playerChoice, string computerChoice)
+    {
+        if (playerChoice == computerChoice)
         {
-            return choices[random.Next(choices.Length)];
+            return "Ничья!";
         }
-        public string DetermineWinner(string playerChoice, string computerChoice)
+
+        if ((playerChoice == "Камень" && computerChoice == "Ножницы") ||
+            (playerChoice == "Ножницы" && computerChoice == "Бумага") ||
+            (playerChoice == "Бумага" && computerChoice == "Камень"))
         {
-            if (playerChoice == computerChoice)
-            {
-                return "Ничья!";
-            }
-            if ((playerChoice == "Камень" && computerChoice == "Ножницы") ||
-                (playerChoice == "Ножницы" && computerChoice == "Бумага") ||
-                (playerChoice == "Бумага" && computerChoice == "Камень"))
-            {
-                return "Вы победили!";
-            }
-            return "Вы проиграли!";
+            return "Вы победили!";
         }
+
+        return "Вы проиграли!";
     }
 }

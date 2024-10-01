@@ -1,5 +1,4 @@
-﻿using RockScissorsPaper;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
